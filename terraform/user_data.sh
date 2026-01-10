@@ -7,7 +7,7 @@ systemctl enable docker
 usermod -aG docker ubuntu
 
 cd /home/ubuntu
-git clone https://github.com/<your-username>/production-monitoring-devops.git
+git clone https://github.com/funCodeSonali/production-monitoring-devops.git
 cd production-monitoring-devops
 
 docker compose up -d
