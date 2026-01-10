@@ -83,9 +83,9 @@ Alerts are grouped by **application**, **database**, **host**, and **infrastruct
 | Alert | Description | Severity |
 |------|------------|----------|
 | **FlaskAppDown** | Flask app cannot be scraped for 2 minutes | Critical |
-| **HighRequestRate** | Request rate exceeds 10 req/min | Warning |
+| **HighRequestRate** | Request rate exceeds 20 req/min | Warning |
 | **HighRequestLatency** | 95th percentile latency > 1s | Warning |
-| **HighDBWrites** | More than 5 DB writes per minute | Warning |
+| **HighDBWrites** | More than 20 DB writes per minute | Warning |
 
 These alerts ensure **application availability, performance, and abnormal load detection**.
 

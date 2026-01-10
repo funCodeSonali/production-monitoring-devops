@@ -16,13 +16,13 @@ groups:
       description: "Prometheus is unable to scrape the Flask app."
 
   - alert: HighRequestRate
-    expr: rate(app_http_requests_total[1m]) > 10
+    expr: rate(app_http_requests_total[1m])*60 > 20
     for: 1m
     labels:
       severity: warning
     annotations:
       summary: "High request rate detected on Flask app"
-      description: "Request rate is above 10 requests per minute."
+      description: "Request rate is above 20 requests per minute."
 
   - alert: HighRequestLatency
     expr: |
@@ -38,13 +38,13 @@ groups:
       description: "95th percentile request latency is above 1 second"
 
   - alert: HighDBWrites
-    expr: rate(app_db_writes_total[1m]) > 5
+    expr: rate(app_db_writes_total[1m])*60 > 20
     for: 1m
     labels:
       severity: warning
     annotations:
       summary: "High DB write rate"
-      description: "More than 5 database writes per minute."
+      description: "More than 20 database writes per minute."
 
 
 # ============================
