@@ -75,9 +75,6 @@ Exposed via `/metrics` using `prometheus_client`:
 - **`app_db_writes_total`**
   - Total number of database write operations
 
----
-
-
 **Why these matter**
 - Traffic visibility
 - Latency analysis using percentiles (P95)
@@ -86,7 +83,7 @@ Exposed via `/metrics` using `prometheus_client`:
 ---
 
 ### 🔹 PostgreSQL Metrics (Postgres Exporter)
-Key database metrics:
+**Key database metrics**:
 - Database availability (`pg_up`)
 - Active vs idle connections
 - Max connections & free connections
@@ -110,8 +107,6 @@ Key database metrics:
 - Swap usage
 - Load averages
 
----
-
 **Use cases**
 - Capacity planning
 - Detect resource pressure
@@ -123,7 +118,6 @@ Key database metrics:
 
 Dashboards are built using **multiple visualization types** to reflect real production usage.
 
----
 
 ### 1️⃣ Flask Application Dashboard
 
@@ -142,7 +136,6 @@ Dashboards are built using **multiple visualization types** to reflect real prod
 - Latency behavior
 - Backend load correlation
 
----
 
 ### 2️⃣ Node / Host Metrics Dashboard
 
@@ -166,7 +159,6 @@ Dashboards are built using **multiple visualization types** to reflect real prod
 - Capacity visibility
 - Resource pressure detection
 
----
 
 ### 3️⃣ PostgreSQL Metrics Dashboard
 
@@ -195,7 +187,6 @@ Alerts are grouped by **application**, **database**, **host**, and **infrastruct
 - Reduced noise
 - Multi-signal correlation for infrastructure failures
 
----
 
 ## Alert Groups
 
@@ -259,6 +250,7 @@ This alert uses **multi-signal correlation** to avoid false positives and indica
 ### Start the stack
 ```bash
 docker compose up --build
+```
 
 ### Access Services
 
