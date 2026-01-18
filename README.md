@@ -22,24 +22,7 @@ The objective of this project is to show **how production systems are monitored,
 
 ## 🏗️ High-Level Architecture
 
-Client Requests
-│
-▼
-Flask Application (Python)
-│
-▼
-PostgreSQL Database
-│
-│ Metrics
-▼
-| Prometheus |
-| - Scrapes application metrics |
-| - Scrapes database metrics |
-| - Scrapes host metrics |
-| - Evaluates alert rules |
-│
-▼
-Grafana Dashboards
+![ ](./snips/architecture.png)
 
 ---
 
@@ -59,6 +42,10 @@ Grafana Dashboards
 ---
 
 ## 📊 Metrics Covered
+
+### Prometheus Targets
+
+![Prometheus Targets](./snips/prometheus-targets.png)
 
 ### 🔹 Application Metrics (Flask)
 
@@ -136,6 +123,9 @@ Dashboards are built using **multiple visualization types** to reflect real prod
 - Latency behavior
 - Backend load correlation
 
+![](./snips/flask-dashboard-1.png)
+![](./snips/flask-dashboard-2.png)
+
 
 ### 2️⃣ Node / Host Metrics Dashboard
 
@@ -159,6 +149,9 @@ Dashboards are built using **multiple visualization types** to reflect real prod
 - Capacity visibility
 - Resource pressure detection
 
+![](./snips/node-dashboard-1.png)
+![](./snips/node-dashboard-2.png)
+
 
 ### 3️⃣ PostgreSQL Metrics Dashboard
 
@@ -173,6 +166,9 @@ Dashboards are built using **multiple visualization types** to reflect real prod
 - Database health monitoring
 - Connection pool awareness
 - Performance diagnostics
+
+![](./snips/postgres-dashboard-1.png)
+![](./snips/postgres-dashboard-2.png)
 
 ---
 
@@ -239,6 +235,8 @@ This alert uses **multi-signal correlation** to avoid false positives and indica
 - Docker daemon stopped
 - Network isolation
 
+![](./snips/prometheus-alerts-1.png)
+![](./snips/prometheus-alerts-2.png)
 ---
 
 ## ▶️ Running the Project Locally
@@ -290,6 +288,6 @@ docker compose up --build
 
 **Sonali Mittal**  
 Software Engineer | DevOps & SRE Enthusiast  
-AWS Certified Cloud Practitioner
+[LinkedIn](https://www.linkedin.com/in/sonali-mittal-b13b69219/)
 
 
