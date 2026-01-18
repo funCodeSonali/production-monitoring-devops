@@ -18,6 +18,3 @@ terraform/.terraform.lock.hcl
 
 # OS
 .DS_Store
-
-# Screenshots / snippets
-snips/
