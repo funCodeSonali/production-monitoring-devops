@@ -261,8 +261,8 @@ docker compose up --build
 | Grafana    | http://localhost:3000  |
 
 ### Grafana default login
-Username: admin
-Password: admin
+- Username: admin
+- Password: admin
 
 ---
 
