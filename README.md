@@ -1,39 +1,66 @@
-# Production-Grade Monitoring & Alerting Stack (DevOps Portfolio Project)
-
-## Overview
-
-This project demonstrates a **production-like monitoring and alerting stack** for a real application using modern DevOps and SRE practices.
-
-It includes:
-- A Flask application with a PostgreSQL backend
-- Custom application metrics
-- Database and host-level metrics
-- Prometheus alerting rules
-- Grafana dashboards
-- Fully containerized setup using Docker Compose
-- Optional Terraform configuration for AWS EC2 demo
-
-The goal of this project is to showcase **end-to-end observability**, not just metrics collection.
+# Production-Grade Monitoring & Alerting Stack  
+### DevOps / SRE Portfolio Project
 
 ---
 
-## Tech Stack
+## 📌 Overview
 
-- **Application**: Flask (Python)
-- **Database**: PostgreSQL
-- **Metrics**: Prometheus
-- **Dashboards**: Grafana
-- **Exporters**:
-  - PostgreSQL Exporter
-  - Node Exporter
-- **Containerization**: Docker & Docker Compose
-- **Infrastructure (optional)**: Terraform (AWS EC2)
+This project demonstrates a **production-like monitoring and alerting system** built using modern **DevOps and SRE best practices**.
+
+It showcases **end-to-end observability** for a real application stack, covering:
+- Application-level metrics
+- Database-level metrics
+- Host-level metrics
+- Actionable alerting
+- Meaningful Grafana dashboards
+- Containerized deployment
+- Optional cloud deployment (AWS EC2)
+
+The objective of this project is to show **how production systems are monitored, diagnosed, and protected**, not just how tools are installed.
 
 ---
 
-## Metrics Exposed
+## 🏗️ High-Level Architecture
 
-### Application Metrics (Flask)
+Client Requests
+│
+▼
+Flask Application (Python)
+│
+▼
+PostgreSQL Database
+│
+│ Metrics
+▼
+| Prometheus |
+| - Scrapes application metrics |
+| - Scrapes database metrics |
+| - Scrapes host metrics |
+| - Evaluates alert rules |
+│
+▼
+Grafana Dashboards
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|----|----|
+| Application | Flask (Python) |
+| Database | PostgreSQL |
+| Metrics Collection | Prometheus |
+| Visualization | Grafana |
+| Exporters | Node Exporter, Postgres Exporter |
+| Alerting | Prometheus Alert Rules |
+| Containerization | Docker, Docker Compose |
+| Infrastructure (optional) | Terraform (AWS EC2) |
+
+---
+
+## 📊 Metrics Covered
+
+### 🔹 Application Metrics (Flask)
 
 Exposed via `/metrics` using `prometheus_client`:
 
@@ -50,29 +77,123 @@ Exposed via `/metrics` using `prometheus_client`:
 
 ---
 
-### Database Metrics (Postgres Exporter)
 
-- Database availability (`pg_up`)
-- Active connections
-- Max connections
-- Transaction statistics
-- Cache and performance metrics
+**Why these matter**
+- Traffic visibility
+- Latency analysis using percentiles (P95)
+- Backend pressure detection
 
 ---
 
-### Host Metrics (Node Exporter)
+### 🔹 PostgreSQL Metrics (Postgres Exporter)
+Key database metrics:
+- Database availability (`pg_up`)
+- Active vs idle connections
+- Max connections & free connections
+- Transaction rate (commit / rollback)
+- Cache hit ratio
+- Database-level activity
+
+**Use cases**
+- Detect DB outages
+- Identify connection saturation
+- Analyze DB performance bottlenecks
+
+---
+
+### 🔹 Host Metrics (Node Exporter)
 
 - CPU usage
 - Memory usage
 - Disk usage
 - Network metrics
+- Swap usage
+- Load averages
 
 ---
 
-## Alerting Strategy
+**Use cases**
+- Capacity planning
+- Detect resource pressure
+- Identify host-level failures
+
+---
+
+## 📈 Grafana Dashboards
+
+Dashboards are built using **multiple visualization types** to reflect real production usage.
+
+---
+
+### 1️⃣ Flask Application Dashboard
+
+**Panels included**
+- Time-series:
+  - Request rate per endpoint
+  - Database write rate
+- Latency:
+  - 95th percentile request latency
+- Stats:
+  - Total requests
+  - Total DB writes
+
+**Demonstrates**
+- Application traffic patterns
+- Latency behavior
+- Backend load correlation
+
+---
+
+### 2️⃣ Node / Host Metrics Dashboard
+
+**Panels included**
+- Gauge:
+  - CPU usage %
+  - Memory usage %
+  - Disk usage %
+- Stat:
+  - Total memory (GiB)
+  - Available memory (GiB)
+  - CPU core count
+  - Swap memory
+- Time-series:
+  - System load
+  - CPU trends
+  - Memory usage trends
+
+**Demonstrates**
+- At-a-glance host health
+- Capacity visibility
+- Resource pressure detection
+
+---
+
+### 3️⃣ PostgreSQL Metrics Dashboard
+
+**Panels included**
+- Active vs idle connections (grouped by database)
+- Remaining connection capacity
+- Transaction throughput
+- Cache hit ratio
+- Database activity breakdown
+
+**Demonstrates**
+- Database health monitoring
+- Connection pool awareness
+- Performance diagnostics
+
+---
+
+## 🚨 Alerting Strategy
 
 Prometheus evaluates alert rules defined in `alerts.yml`.  
 Alerts are grouped by **application**, **database**, **host**, and **infrastructure** layers.
+
+### 🔔 Alert Design Principles
+- Actionable thresholds
+- Time-based stability using `for`
+- Reduced noise
+- Multi-signal correlation for infrastructure failures
 
 ---
 
@@ -129,7 +250,7 @@ This alert uses **multi-signal correlation** to avoid false positives and indica
 
 ---
 
-## Running the Project Locally
+## ▶️ Running the Project Locally
 
 ### Prerequisites
 - Docker
@@ -138,5 +259,45 @@ This alert uses **multi-signal correlation** to avoid false positives and indica
 ### Start the stack
 ```bash
 docker compose up --build
+
+### Access Services
+
+| Service     | URL                    |
+|------------|------------------------|
+| Flask App  | http://localhost:5000  |
+| Prometheus | http://localhost:9090  |
+| Grafana    | http://localhost:3000  |
+
+### Grafana default login
+Username: admin
+Password: admin
+
+---
+
+## ☁️ AWS EC2 Demo (Optional)
+
+- Terraform configuration provided for one-time AWS EC2 demo  
+- Designed to work within AWS Free Tier  
+- Instance can be terminated after demo to avoid costs  
+
+---
+
+## 🎯 What This Project Demonstrates
+
+- ✅ Real-world monitoring architecture  
+- ✅ Prometheus instrumentation & PromQL  
+- ✅ Grafana dashboard design (Gauge, Stat, Time-series)  
+- ✅ Alert design & correlation  
+- ✅ Docker & Compose orchestration  
+- ✅ DevOps & SRE mindset  
+
+---
+
+
+## 👩‍💻 Author
+
+**Sonali Mittal**  
+Software Engineer | DevOps & SRE Enthusiast  
+AWS Certified Cloud Practitioner
 
 
